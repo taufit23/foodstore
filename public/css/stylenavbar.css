@@ -1,0 +1,26 @@
+body {
+	margin:  0px;
+    width: 100%;
+}
+
+.navbarlogo {
+	width: 100%;
+    margin: 0px 0px 0px 10px;
+}
+
+
+.container-fluid {
+    margin: 0px 350px 0px 0px;
+    size: 17px;
+}
+
+.nav-daftar {
+    background-color: #ff0404; color: rgb(255, 251, 0);
+    margin: 0px 10px 0px 0px;
+}
+
+.container {
+    width: 100%;
+    margin: 0px 0px 0px -20px;
+}
+
