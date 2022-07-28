@@ -15,6 +15,7 @@ use App\Http\Controllers\Private\Toko\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/toko/{toko}', [TokoController::class, 'toko']);
+Route::post('/toko/{toko}/postkoment', [TokoController::class, 'postkoment']);
 
 
 // login

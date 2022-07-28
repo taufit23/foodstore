@@ -10,11 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $data_lokasi = Toko::with('lokasi')->get();
-            $avaragelatitude = Lokasi::avg('latitude');
-            $avaragelongitude = Lokasi::avg('longitude');
+        $data_lokasi = Toko::where('status', 'active')->with('lokasi')->get();
+        $avaragelatitude = Lokasi::avg('latitude');
+        $avaragelongitude = Lokasi::avg('longitude');
 
-        
+
         // dd($avaragelatitude, $avaragelongitude);
         return view('homepage.home', compact('data_lokasi', 'avaragelatitude', 'avaragelongitude'));
     }

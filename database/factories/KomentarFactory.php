@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AdminFactory extends Factory
+class KomentarFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,9 @@ class AdminFactory extends Factory
     public function definition()
     {
         return [
-            'email' => 'hamdi@gmail.com',
-            'nama' => $this->faker->name(),
-            'password' => bcrypt('Angka1dan2!'),
+            'toko_id' => $this->faker->numberBetween(1, 3),
+            'nama_costumer' => $this->faker->name(),
+            'komentar' => $this->faker->realText($maxNbChars = 200, $indexSize = 3  ),
         ];
     }
 }

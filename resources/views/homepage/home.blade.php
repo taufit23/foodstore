@@ -23,29 +23,25 @@
             rotateControl: false
         }
         var infowindow = new google.maps.InfoWindow();
-        
+
         var places = @json($data_lokasi);
         var assetssdss = '{{ URL::asset('') }}';
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        // marker = new google.maps.Marker({
-        //         position: new google.maps.LatLng(places[0].lokasi.latitude, places[0].lokasi.longitude),
-        //         // position: new google.maps.LatLng(0.33248575404354663, 101.0307303848581),
-        //         icon: image,
-        //         map: map,
-        //     });
         for (i = 0; i < places.length; i++) {
             var image = new google.maps.MarkerImage( assetssdss + places[0+i].cover, null, null, null, new google.maps
             .Size(20, 20));
+            const slugggt = places[0 + i].slug_usaha;
+            console.log(slugggt);
             const contentString = `
-
             <div class="card" style="width: 18rem;">
                 <img src="` + places[0+i].cover + `" class="rounded mx-auto d-block card-img-top" style="height: 18em;">
                 <div class="card-body">
                     <p class="card-text">`+places[0+i].nama_usaha+`</p>
-                    <a href="toko/`+places[0+1].slug_usaha+`" class="card-link">Lihat detail</a>
+                    <a href="toko/`+ slugggt +`" target="_blank" class="card-link">Lihat toko</a>
                 </div>
                 </div>
             `;
+            // places[0+1] . slug_usaha
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(places[0+i].lokasi.latitude, places[0+i].lokasi.longitude),
                 icon: image,
