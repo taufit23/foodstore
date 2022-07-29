@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth', 'Cekrole:admin']], function() {
 Route::group(['middleware' => ['auth', 'Cekrole:toko']], function(){
     Route::get('/tokos/dashboard', TokoDashboardController::class)->name('toko.dashboard');
     Route::resource('/tokos/product', ProductController::class);
+    Route::post('/tokos/product/addimageslide', [ ProductController::class, 'addimageslide'])->name('addimageslide');
     Route::get('/tokos/{slug_kategori}', [ProductController::class, 'product_by_slug']);
     Route::post('/tokos/kategori/add', [KategoriController::class, 'store'])->name('toko.addcategory');
 });

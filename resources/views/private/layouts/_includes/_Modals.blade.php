@@ -26,7 +26,7 @@
                             <label>Cover kategori</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputcoverkategori"
+                                    <input type="file" class="custom-file-input"
                                         name="cover_kategori">
                                     <label class="custom-file-label" for="inputcoverkategori">Choose file</label>
                                 </div>
@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('toko.addcategory') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -110,7 +110,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" placeholder="250000" name="harga">
+                                    <input type="number" class="form-control" placeholder="ext : 25000" name="harga">
                                     @error('harga')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -123,31 +123,11 @@
                             <label>Cover product</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputcoverproduk"
+                                    <input type="file" class="custom-file-input"
                                         name="cover_produk">
                                     <label class="custom-file-label" for="inputcoverproduk">Choose file</label>
                                 </div>
                                 @error('cover_produk')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Gambar product <code>Multiple</code></label>
-                            <div class="col-md-12">
-                                <div class="mt-1 text-center">
-                                    <div class="imageproduct"> </div>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputimageproduct" name="url[]"
-                                        id="imageproduct" multiple>
-                                    <label class="custom-file-label" for="inputimageproduct">Choose file</label>
-                                </div>
-                                @error('url')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -164,29 +144,4 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    < script >
-        $(function () {
-            // Multiple images preview with JavaScript
-            var previewImages = function (input, imgPreviewPlaceholder) {
-                if (input.files) {
-                    var filesAmount = input.files.length;
-                    for (i = 0; i < filesAmount; i++) {
-                        var reader = new FileReader();
-                        reader.onload = function (event) {
-                            $($.parseHTML('<img class="img img-thumbnail img-fluid" width="200">')).attr(
-                                'src', event
-                                .target
-                                .result).appendTo(
-                                imgPreviewPlaceholder);
-                        }
-                        reader.readAsDataURL(input.files[i]);
-                    }
-                }
-            };
-            $('#imageproduct').on('change', function () {
-                previewImages(this, 'div.imageproduct');
-            })
-        });
-</script>
+

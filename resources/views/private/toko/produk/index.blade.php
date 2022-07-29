@@ -18,6 +18,12 @@ Product Toko
                             <li>{{ $error }}</li>
                             @endforeach
                         </div>
+                        @elseif(session('success'))
+                        <div class="alert alert-success"
+                            style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
+                            role="alert">
+                            <li>{{ session('success') }}</li>
+                        </div>
                         @endif
                         <div class="card-header">
                             <h3 class="card-title">Products By Category</h3>
@@ -65,17 +71,9 @@ Product Toko
                     </div>
 
                     <div class="card my-2">
-                        @if (session('errors'))
-                        <div class="alert alert-danger"
-                            style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                            role="alert">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </div>
-                        @endif
                         <div class="card-header">
                             <h3 class="card-title">All Products</h3>
+                            <code>. Click baris untuk lihat detail</code>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <div class="input-group-append">
@@ -93,42 +91,108 @@ Product Toko
                                     <tr class="text-center">
                                         <th>#</th>
                                         <th>Kategory</th>
-                                        <th>Kategory Cover</th>
-                                        <th>Lihat Poduk</th>
+                                        <th>Nama produk</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kategory as $kate => $kategori)
+                                    @foreach ($products as $prod => $produ)
                                     <tr data-widget="expandable-table" aria-expanded="false">
-                                        <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td>{{ $kategori->nama_kategori }}</td>
-                                        <td class="text-center">
-                                            <img src="{{ asset($kategori->cover_categori) }}"
-                                                class="img img-size-64 img-thumbnail" alt="">
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $produ->kategori->nama_kategori }}</td>
+                                        <td>
+                                            {{ $produ->nama_produk }}
                                         </td>
                                         <td class="text-center">
-                                            <a href="/tokos/{{ $kategori->slug_kategori }}">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="" class="btn sm btm-primary">
+                                                <i class="fas fa-file"></i>Edit
                                             </a>
                                         </td>
                                     </tr>
                                     <tr class="expandable-body">
-                                        <td colspan="5">
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has
-                                                been the industry's standard dummy text ever since the 1500s, when an
-                                                unknown printer took
-                                                a galley of type and scrambled it to make a type specimen book. It has
-                                                survived not only
-                                                five centuries, but also the leap into electronic typesetting, remaining
-                                                essentially
-                                                unchanged. It was popularised in the 1960s with the release of Letraset
-                                                sheets containing
-                                                Lorem Ipsum passages, and more recently with desktop publishing software
-                                                like Aldus
-                                                PageMaker including versions of Lorem Ipsum.
-                                            </p>
+                                        <td colspan="4">
+                                            <div class="container-fluid">
+
+
+                                                <dl class="row">
+                                                    <div class="col-sm-2">
+                                                        <div class="row">
+                                                            <img src="{{ asset($produ->cover_produk) }}"
+                                                                class="img img-thumbnail" style="width: 180px">
+                                                        </div>
+                                                        <div class="row">
+                                                            <code> Cover produk</code>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="row">
+                                                            <dt class="col-sm-4 font-weight-bold text-info">Deskripsi
+                                                                Produk
+                                                            </dt>
+                                                            <dd class="col-sm-8">{{ $produ->deskripsi_produk }}</dd>
+                                                            <dt class="col-sm-4 font-weight-bold text-info">Stoct Produk
+                                                            </dt>
+                                                            <dd class="col-sm-8">{{ $produ->qty }}</dd>
+                                                            <dt class="col-sm-4 font-weight-bold text-info">Harga Produk
+                                                            </dt>
+                                                            <dd class="col-sm-8">Rp.
+                                                                {{ number_format($produ->harga,0,',','.') }}</dd>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        @if ($produ->image->count() < 1 ) <form
+                                                            action="{{ route('addimageslide') }}" method="POST"
+                                                            enctype="multipart/form-data" id="form-imagesss">
+                                                            @csrf
+                                                            <label>Min 3 file</label>
+                                                            <input type="hidden" name="produk_id" class="hidden"
+                                                                value="{{ $produ->id }}">
+                                                            <input type="file" name="url[]" class="form-control"
+                                                                multiple id="imagesinput">
+                                                            <code>Upload Multiple</code>
+                                                            </form>
+                                                            @else
+                                                            <div class="row">
+                                                                <div id="gambarcosresl"
+                                                                    class="carousel slide carousel-fade"
+                                                                    data-ride="carousel">
+                                                                    <div class="carousel-inner">
+                                                                        @foreach ($produ->image as $key => $gambr)
+                                                                        <div
+                                                                            class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                                                            <img src="{{ asset($gambr->url) }}"
+                                                                                class="img img-thumbnail"style="width: 180px">
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                    <a class="carousel-control-prev"
+                                                                        href="#gambarcosresl" role="button"
+                                                                        data-slide="prev">
+                                                                        <span class="carousel-control-prev-icon"
+                                                                            aria-hidden="true"></span>
+                                                                        <span class="sr-only">Previous</span>
+                                                                    </a>
+                                                                    <a class="carousel-control-next"
+                                                                        href="#gambarcosresl" role="button"
+                                                                        data-slide="next">
+                                                                        <span class="carousel-control-next-icon"
+                                                                            aria-hidden="true"></span>
+                                                                        <span class="sr-only">Next</span>
+                                                                    </a>
+                                                                </div>
+                                                                {{-- <img src="{{ asset($produ->cover_produk) }}"
+                                                                    class="img img-thumbnail" style="width: 180px"> --}}
+                                                            </div>
+                                                            <div class="row">
+                                                                <code>Image slide</code>
+                                                            </div>
+                                                            @endif
+
+                                                    </div>
+
+                                            </div>
+
+
                                         </td>
                                     </tr>
                                     @endforeach
@@ -142,6 +206,11 @@ Product Toko
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    document.getElementById("imagesinput").onchange = function () {
+        document.getElementById("form-imagesss").submit();
+    };
+</script>
 @stop
 
 @section('modal')
