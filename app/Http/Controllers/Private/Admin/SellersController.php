@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Private\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,10 @@ class SellersController extends Controller
         $seller = User::findOrFail($id);
         $seller->status = $seller->status + 2;
         $seller->save();
+
+        $toko = Toko::where('user_id', $seller->id)->first();
+        $toko->status = 'nonactive';
+        $toko->save();
         return redirect()->back()->with('success', 'Seeler dibekukan');
     }
     public function makevalid($id)
@@ -40,6 +45,10 @@ class SellersController extends Controller
         $seller = User::findOrFail($id);
         $seller->status = 1;
         $seller->save();
+
+        $toko = Toko::where('user_id', $seller->id)->first();
+        $toko->status = 'active';
+        $toko->save();
         return redirect()->back()->with('success', 'Seeler Divalidasi');
     }
     /**

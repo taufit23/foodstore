@@ -71,7 +71,7 @@
                                     <div>
                                         <h6 class="fw-bold text-primary">{{ $komen->nama_costumer }}</h6>
                                         <p class="text-muted small">
-                                            Post date : {{ $komen->created_at->isoFormat('dddd D') }}
+                                            {{-- Post date : {{ $komen->created_at->isoFormat('dddd D') }} --}}
                                         </p>
                                     </div>
                                 </div>

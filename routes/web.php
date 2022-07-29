@@ -11,6 +11,7 @@ use App\Http\Controllers\Private\Auth\LoginController;
 use App\Http\Controllers\Private\Auth\RegisterController;
 use App\Http\Controllers\Private\Toko\DashboardController as TokoDashboardController;
 use App\Http\Controllers\Private\Toko\KategoriController;
+use App\Http\Controllers\Private\Toko\PasswordController;
 use App\Http\Controllers\Private\Toko\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -44,7 +45,8 @@ Route::group(['middleware' => ['auth', 'Cekrole:toko']], function(){
     Route::post('/tokos/product/addimageslide', [ ProductController::class, 'addimageslide'])->name('addimageslide');
 
     // pass
-    Route::get('/tokos/ubahpassword', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::get('/tokos/profile', [PasswordController::class, 'index'])->name('profile.index');
+    Route::post('/tokos/profile/gantipw', [PasswordController::class, 'gantipw'])->name('profile.gantipw');
     // kategori
     Route::get('/tokos/kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/tokos/kategori/add', [KategoriController::class, 'store'])->name('toko.addcategory');

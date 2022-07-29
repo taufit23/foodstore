@@ -74,40 +74,41 @@
                 </li>
                 {{-- toko link --}}
                 @else
-                    @if (auth()->user()->status = 1)
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('product.index') }}"
-                                class="nav-link {{ Request::is('tokos/product*') ? 'active' : '' }}">
-                                <i class="nav-icon fab fa-product-hunt"></i>
-                                <p>
-                                    Product
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('kategori.index') }}"
-                                class="nav-link {{ Request::is('tokos/kategori*') ? 'active' : '' }}">
-                                <i class="nav-icon fab fa-500px"></i>
-                                <p>
-                                    Kategori
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('kategori.index') }}"
-                                class="nav-link {{ Request::is('tokos/kategori*') ? 'active' : '' }}">
-                                <i class="nav-icon fab fa-500px"></i>
-                                <p>
-                                    Kategori
-                                </p>
-                            </a>
-                        </li>
-                        @else
-                        <li class="nav-item menu-open">
-                            <p>Status akun : <span class="text-warning">{{ (auth()->user()->status == null) ? 'Invalid' : ''}}</span></p>
-                            <p>Menu tidak bisa di akses</p>
-                        </li>
-                        @endif
+                @if (auth()->user()->status = 1)
+                <li class="nav-item menu-open">
+                    <a href="{{ route('product.index') }}"
+                        class="nav-link {{ Request::is('tokos/product*') ? 'active' : '' }}">
+                        <i class="nav-icon fab fa-product-hunt"></i>
+                        <p>
+                            Product
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="{{ route('kategori.index') }}"
+                        class="nav-link {{ Request::is('tokos/kategori*') ? 'active' : '' }}">
+                        <i class="nav-icon fab fa-500px"></i>
+                        <p>
+                            Kategori
+                        </p>
+                    </a>
+                </li>
+                @else
+                <li class="nav-item menu-open">
+                    <p>Status akun : <span
+                            class="text-warning">{{ (auth()->user()->status == null) ? 'Invalid' : ''}}</span></p>
+                    <p>Menu tidak bisa di akses</p>
+                </li>
+                @endif
+                <li class="nav-item menu-open">
+                    <a href="{{ route('profile.index') }}"
+                        class="nav-link {{ Request::is('tokos/profile*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
+                </li>
                 @endif
                 <li class="nav-header">Account</li>
                 <li class="nav-item">
