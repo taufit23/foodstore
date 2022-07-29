@@ -23,6 +23,7 @@ class TokoFactory extends Factory
             'Keterangan' => $this->faker->text($maxNbChars = 200),
             'alamat' => $this->faker->text($maxNbChars = 200),
             'cover' => 'https://picsum.photos/200/300?' . $this->faker->numberBetween(1, 9999),
+            'status' => 'nonactive',
         ];
     }
 }

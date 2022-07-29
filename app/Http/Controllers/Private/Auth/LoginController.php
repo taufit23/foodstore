@@ -40,7 +40,14 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard')->with('success', 'Login berhasil');
             }
             elseif (Auth::user()->role == 'toko') {
-                return redirect()->route('toko.dashboard')->with('success', 'login sukses');
+                if (Auth::user()->status == null) {
+                    return redirect()->route('toko.dashboard')->with('errors', 'Pendaftaran toko belum divalidasi');
+                }
+                elseif (Auth()->user()->status == 1) {
+                    return redirect()->route('toko.dashboard')->with('success', 'login sukses');
+                }else {
+                    return redirect()->route('logout')->with('errors', 'Akun toko anda dibekukan!');
+                }
             }
         } else { // false
             //Login Fail

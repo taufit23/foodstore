@@ -29,7 +29,7 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         for (i = 0; i < places.length; i++) {
             var image = new google.maps.MarkerImage( assetssdss + places[0+i].cover, null, null, null, new google.maps
-            .Size(20, 20));
+                .Size(20, 20));
             const slugggt = places[0 + i].slug_usaha;
             console.log(slugggt);
             const contentString = `

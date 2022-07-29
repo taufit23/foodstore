@@ -13,9 +13,6 @@ class HomeController extends Controller
         $data_lokasi = Toko::where('status', 'active')->with('lokasi')->get();
         $avaragelatitude = Lokasi::avg('latitude');
         $avaragelongitude = Lokasi::avg('longitude');
-
-
-        // dd($avaragelatitude, $avaragelongitude);
         return view('homepage.home', compact('data_lokasi', 'avaragelatitude', 'avaragelongitude'));
     }
 

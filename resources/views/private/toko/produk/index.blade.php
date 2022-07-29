@@ -9,7 +9,7 @@ Product Toko
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card my-2">
                         @if (session('errors'))
                         <div class="alert alert-danger"
                             style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
@@ -26,56 +26,10 @@ Product Toko
                         </div>
                         @endif
                         <div class="card-header">
-                            <h3 class="card-title">Products By Category</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                            data-target="#addcategory-modal">
-                                            <i class="fas fa-plus"></i> Add Category
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body table-responsive p-0 table-bordered" style="height: 300px;">
-                            <table class="table table-head-fixed text-nowrap">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>#</th>
-                                        <th>Kategory</th>
-                                        <th>Kategory Cover</th>
-                                        <th>Lihat Poduk</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($kategory as $kate => $kategori)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->index + 1 }}</td>
-                                        <td>{{ $kategori->nama_kategori }}</td>
-                                        <td class="text-center">
-                                            <img src="{{ asset($kategori->cover_categori) }}"
-                                                class="img img-size-64 img-thumbnail" alt="">
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="/tokos/{{ $kategori->slug_kategori }}">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                    <div class="card my-2">
-                        <div class="card-header">
                             <h3 class="card-title">All Products</h3>
                             <code>. Click baris untuk lihat detail</code>
                             <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
+                                <div class="input-group input-group-sm" style="width: 100%;">
                                     <div class="input-group-append">
                                         <button type="button" class="btn btn-secondary" data-toggle="modal"
                                             data-target="#addproduct-modal">
@@ -104,8 +58,9 @@ Product Toko
                                             {{ $produ->nama_produk }}
                                         </td>
                                         <td class="text-center">
-                                            <a href="" class="btn sm btm-primary">
-                                                <i class="fas fa-file"></i>Edit
+                                            <a href="{{ route('product.show', $produ->slug_produk) }}"
+                                                class="btn sm btm-primary">
+                                                <i class="fas fa-eye"></i>detail
                                             </a>
                                         </td>
                                     </tr>
@@ -161,7 +116,8 @@ Product Toko
                                                                         <div
                                                                             class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                                                             <img src="{{ asset($gambr->url) }}"
-                                                                                class="img img-thumbnail"style="width: 180px">
+                                                                                class="img img-thumbnail"
+                                                                                style="width: 180px">
                                                                         </div>
                                                                         @endforeach
                                                                     </div>
@@ -181,7 +137,7 @@ Product Toko
                                                                     </a>
                                                                 </div>
                                                                 {{-- <img src="{{ asset($produ->cover_produk) }}"
-                                                                    class="img img-thumbnail" style="width: 180px"> --}}
+                                                                class="img img-thumbnail" style="width: 180px"> --}}
                                                             </div>
                                                             <div class="row">
                                                                 <code>Image slide</code>
@@ -206,11 +162,6 @@ Product Toko
         </div>
     </section>
 </div>
-<script type="text/javascript">
-    document.getElementById("imagesinput").onchange = function () {
-        document.getElementById("form-imagesss").submit();
-    };
-</script>
 @stop
 
 @section('modal')

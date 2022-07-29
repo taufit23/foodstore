@@ -29,6 +29,12 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'Cekrole:admin']], function() {
     Route::get('/admin/dashboard', DashboardController::class)->name('admin.dashboard');
     Route::resource('/admin/sellers', SellersController::class);
+    // get sellers
+    Route::get('/admin/invalid_sellers', [SellersController::class, 'invalidseller'])->name('sellers.invalid');
+    Route::get('/admin/frozen_sellers', [SellersController::class, 'frozenseller'])->name('sellers.frozen');
+    // validasi
+    Route::post('/admin/sellers/makefrozen/{id}', [SellersController::class, 'makefrozen'])->name('sellers.makefrozen');
+    Route::post('/admin/sellers/makevalid/{id}', [SellersController::class, 'makevalid'])->name('sellers.makevalid');
 });
 
 // aktor toko (penjual/seller)
@@ -36,6 +42,11 @@ Route::group(['middleware' => ['auth', 'Cekrole:toko']], function(){
     Route::get('/tokos/dashboard', TokoDashboardController::class)->name('toko.dashboard');
     Route::resource('/tokos/product', ProductController::class);
     Route::post('/tokos/product/addimageslide', [ ProductController::class, 'addimageslide'])->name('addimageslide');
-    Route::get('/tokos/{slug_kategori}', [ProductController::class, 'product_by_slug']);
+
+    // pass
+    Route::get('/tokos/ubahpassword', [KategoriController::class, 'index'])->name('kategori.index');
+    // kategori
+    Route::get('/tokos/kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/tokos/kategori/add', [KategoriController::class, 'store'])->name('toko.addcategory');
+    // Route::get('/tokos/{slug_kategori}', [ProductController::class, 'product_by_slug']);
 });

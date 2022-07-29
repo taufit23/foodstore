@@ -11,6 +11,11 @@ use Intervention\Image\Facades\Image;
 
 class KategoriController extends Controller
 {
+    public function index()
+    {
+        $kategory = Kategori::where('user_id', auth()->user()->id)->get();
+        return view('private.toko.kategori.index', compact( 'kategory'));
+    }
     public function store(KategoryRequest $kategoryRequest)
     {
         $kategori = new Kategori();

@@ -24,11 +24,11 @@ class ProductController extends Controller
         $kategory = Kategori::where('user_id', auth()->user()->id)->get();
         return view('private.toko.produk.index', compact('products', 'kategory'));
     }
-    public function product_by_slug($slug)
-    {
-        $kategory = Kategori::where('slug_kategori', $slug)->first('id');
-        $products = Produk::where('kategori_id', $kategory->id)->get();
-    }
+    // public function product_by_slug($slug)
+    // {
+    //     $kategory = Kategori::where('slug_kategori', $slug)->first('id');
+    //     $products = Produk::where('kategori_id', $kategory->id)->get();
+    // }
 
     public function addimageslide(ImagesUploadRequest $imagesUploadRequest)
     {
@@ -104,7 +104,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Produk::where('slug_produk', $id)->with('image', 'kategori')->first();
+        return view('private.toko.produk.detail', compact('product'));
     }
 
     /**

@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="{{ asset('private/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('private/dist/css/adminlte.min.css') }}">
-        
+        @yield('css')
+        @yield('script')
     </head>
 
     <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -68,7 +69,7 @@
         <script src="{{ asset('private/dist/js/demo.js') }}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{ asset('private/dist/js/pages/dashboard2.js') }}"></script>
-        
+
         {{-- sweet alert --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>

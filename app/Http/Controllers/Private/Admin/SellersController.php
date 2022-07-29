@@ -15,11 +15,33 @@ class SellersController extends Controller
      */
     public function index()
     {
-        $sellers = User::where('role', 'toko')->with('toko','produk')->get();
-        dd($sellers);
-        return view('private.admin.sellers', compact('sellers'));
+        $sellers = User::where('role', 'toko')->where('status', 1)->with('toko')->get();
+        return view('private.admin.sellers.valid', compact('sellers'));
     }
-
+    public function invalidseller ()
+    {
+        $sellers = User::where('role', 'toko')->where('status', null)->with('toko')->get();
+        return view('private.admin.sellers.invalid', compact('sellers'));
+    }
+    public function frozenseller ()
+    {
+        $sellers = User::where('role', 'toko')->where('status', '>', 1 )->with('toko')->get();
+        return view('private.admin.sellers.froen', compact('sellers'));
+    }
+    public function makefrozen($id)
+    {
+        $seller = User::findOrFail($id);
+        $seller->status = $seller->status + 2;
+        $seller->save();
+        return redirect()->back()->with('success', 'Seeler dibekukan');
+    }
+    public function makevalid($id)
+    {
+        $seller = User::findOrFail($id);
+        $seller->status = 1;
+        $seller->save();
+        return redirect()->back()->with('success', 'Seeler Divalidasi');
+    }
     /**
      * Show the form for creating a new resource.
      *

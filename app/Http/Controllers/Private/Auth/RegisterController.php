@@ -25,7 +25,7 @@ class RegisterController extends Controller
             'email'                 => 'email|unique:users,email',
             'no_hp'                 => 'unique:users,no_hp',
             'nama_usaha'            => 'min:4|max:35|unique:toko,nama_usaha',
-            'alamat'                => 'min:4|max:35',
+            'alamat'                => 'min:4|max:350',
             'keterangan'            => 'min:4|max:35',
             'password'              => 'min:8|confirmed',
             'cover'                 => 'mimes:jpg,jpeg,png',
@@ -63,10 +63,10 @@ class RegisterController extends Controller
         }
         $toko->save();
         $lokasi = new Lokasi();
-        $lokasi->user_id = $user->id; 
-        $lokasi->toko_id = $toko->id; 
-        $lokasi->latitude = $registerRequest->latitude; 
-        $lokasi->longitude = $registerRequest->longtitude; 
+        $lokasi->user_id = $user->id;
+        $lokasi->toko_id = $toko->id;
+        $lokasi->latitude = $registerRequest->latitude;
+        $lokasi->longitude = $registerRequest->longtitude;
         $lokasi->save();
         return redirect()->route('login')->with('success', 'Anda berhasil mendaftar, Silahkan login');
     }
