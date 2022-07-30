@@ -53,15 +53,14 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($product->image as $image)
-
-                                    @endforeach
                                     <div class="col-sm-2">
                                         <a href="{{ asset($image->url) }}" data-toggle="lightbox"
                                             data-title="sample 1 - white" data-gallery="gallery">
                                             <img src="{{ asset($image->url) }}" class="img-fluid mb-2"
-                                                alt="white sample" />
+                                            alt="white sample" />
                                         </a>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -75,9 +74,6 @@
         </div>
     </section>
 </div>
-@stop
-
-@section('script')
 <!-- Ekko Lightbox -->
 <script src="{{ asset('private/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
 <script>
@@ -98,4 +94,4 @@
         });
     })
 </script>
-@endsection
+@stop

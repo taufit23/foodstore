@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Kategori;
 use App\Models\Lokasi;
+use App\Models\Produk;
 use App\Models\Toko;
 use Illuminate\Http\Request;
 
@@ -20,5 +23,21 @@ class HomeController extends Controller
     {
         $data = Lokasi::all();
         return response()->json($data);
+    }
+    public function databykategori($blugs)
+    {
+        $produk = Kategori::with('produk')->where('slug_kategori', $blugs)->first();
+        return view('homepage.produkbycategory', compact('produk'));
+    }
+    public function datakategori ()
+    {
+        $kategori = Kategori::all();
+        return view('homepage.kategori', compact('kategori'));
+    }
+    public function detailproduk($slug)
+    {
+        $produk = Produk::where('slug_produk', $slug)->first();
+        dd($produk->image);
+        return view('homepage.detail_produk', compact('produk'));
     }
 }

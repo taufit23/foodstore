@@ -60,11 +60,7 @@
 <script src="{{ mix('js/app.js') }}"></script>
 @endsection
 @section('content')
-<!--menampilkan div untuk menampilkan peta-->
 
-<div class="card">
-
-</div>
 <div class="row justify-content-center" onload="initialize()">
     <div id="map-canvas" style="height: 500px; width: 100%; position: relative; overflow: hidden;"></div>
 </div>

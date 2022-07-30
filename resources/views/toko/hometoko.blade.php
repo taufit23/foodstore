@@ -124,11 +124,12 @@
                     @foreach ($toko->produk as $item)
                     <div class="col-md-4">
                         <div class="card px-1 py-1">
-                            <img src="{{ $item->cover_produk }}" class="card-img img-fluid img-thumbnail" alt="...">
-                            <div class="card-img-overlay">
+                            <img src="{{ asset($item->cover_produk) }}" class="card-img img-fluid img-thumbnail" alt="...">
+                            <div class="card-img-overlay" style="width: 500px">
                                 <h5 class="card-title">Nama Produk : {{ $item->nama_produk }}</h5>
                                 <p class="card-text">Keterangan : {{ $item->deskripsi_produk }}</p>
                                 <p class="card-text">Stok : {{ $item->qty }}</p>
+                                <p class="card-text">Harga : {{ $item->harga }}</p>
                             </div>
                         </div>
                     </div>

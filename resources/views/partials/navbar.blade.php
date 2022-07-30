@@ -12,14 +12,15 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Kategori">Kategori</a>
+                    <a class="nav-link" href="{{ route('datakategori') }}">Kategori</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tentang</a>
                 </li>
                 @auth
                 <li class="nav-item">
-                    <a href="{{ (auth()->user()->role == 'admin' ? route('admin.dashboard') : route('toko.dashboard')) }}" class="nav-link" target="_blank">Private Dashboard</a>
+                    <a href="{{ (auth()->user()->role == 'admin' ? route('admin.dashboard') : route('toko.dashboard')) }}"
+                        class="nav-link" target="_blank">Private Dashboard</a>
                 </li>
                 @else
                 <li class="nav-item">
@@ -27,4 +28,6 @@
                 </li>
                 @endauth
             </ul>
+        </div>
+    </div>
 </nav>

@@ -15,9 +15,11 @@ use App\Http\Controllers\Private\Toko\PasswordController;
 use App\Http\Controllers\Private\Toko\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/kategori', [HomeController::class, 'datakategori'] )->name('datakategori');
+Route::get('/kategori/{slugkate}', [HomeController::class, 'databykategori'] )->name('databycategori');
 Route::get('/toko/{toko}', [TokoController::class, 'toko']);
 Route::post('/toko/{toko}/postkoment', [TokoController::class, 'postkoment']);
-
+Route::get('/produk/{prod}', [HomeController::class, 'detailproduk'])->name('detail.produk');
 
 // login
 Route::get('/login', [LoginController::class, 'index'])->name('login');

@@ -3,6 +3,7 @@
 Product Toko
 @endsection
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -143,25 +144,26 @@ Product Toko
                                                                 <code>Image slide</code>
                                                             </div>
                                                             @endif
-
                                                     </div>
-
+                                                </dl>
                                             </div>
-
-
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+<script>
+    document.getElementById("imagesinput").onchange = function () {
+        document.getElementById("form-imagesss").submit();
+    };
+</script>
 @stop
 
 @section('modal')
