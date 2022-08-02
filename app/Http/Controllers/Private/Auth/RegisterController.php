@@ -34,6 +34,7 @@ class RegisterController extends Controller
         ];
         $validator = Validator::make($registerRequest->all(), $rules);
         if ($validator->fails()) {
+            toastr()->error('terjad beberapa error');
             return redirect()->back()->withErrors($validator)->withInput($registerRequest->all);
         }
         $user = new User();
@@ -68,6 +69,8 @@ class RegisterController extends Controller
         $lokasi->latitude = $registerRequest->latitude;
         $lokasi->longitude = $registerRequest->longtitude;
         $lokasi->save();
-        return redirect()->route('login')->with('success', 'Anda berhasil mendaftar, Silahkan login');
+
+        toastr()->success('Anda berhasil mendaftar, Silahkan login');
+        return redirect()->route('login');
     }
 }

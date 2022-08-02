@@ -37,7 +37,10 @@ class HomeController extends Controller
     public function detailproduk($slug)
     {
         $produk = Produk::where('slug_produk', $slug)->first();
-        dd($produk->image);
         return view('homepage.detail_produk', compact('produk'));
+    }
+    public function tentang ()
+    {
+        return view('homepage.tentang');
     }
 }

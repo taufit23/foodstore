@@ -1,26 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Private\Toko;
 
+use App\Http\Controllers\Controller;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
-use App\Models\kategori;
 
-
-class AdminKategoriController extends Controller
+class KomentarController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // kita ambil data kategori per halaman 20 data dan (paginate(20))
-        // kita urutkan yang terakhir diiput yang paling atas (orderBy)
-        $itemkategori = Kategori::all();
-        $data = array('title' => 'Kategori Produk');
-        return view('kategori.index', compact('itemkategori'));
-
+        $komentars = Komentar::where('toko_id', auth()->user()->toko->id)->orderBy('created_at', 'desc')->paginate(8);
+        return view('private.toko.komentar.index', compact('komentars'));
     }
 
     /**
@@ -30,8 +26,7 @@ class AdminKategoriController extends Controller
      */
     public function create()
     {
-        $data = array('title' => 'Form Kategori');
-        return view('kategori.create', $data);
+        //
     }
 
     /**
@@ -62,10 +57,9 @@ class AdminKategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori $kategori)
+    public function edit($id)
     {
-        $data = array('title' => 'Form Edit Kategori');
-        return view('kategori.edit', $data);
+        //
     }
 
     /**
@@ -75,7 +69,7 @@ class AdminKategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $kategori)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -86,10 +80,8 @@ class AdminKategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        $kategori->delete();
-
-        return redirect()->route('kategori.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }

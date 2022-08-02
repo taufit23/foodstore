@@ -38,7 +38,8 @@ class SellersController extends Controller
         $toko = Toko::where('user_id', $seller->id)->first();
         $toko->status = 'nonactive';
         $toko->save();
-        return redirect()->back()->with('success', 'Seeler dibekukan');
+        toastr()->success('Seeler dibekukan');
+        return redirect()->back();
     }
     public function makevalid($id)
     {
@@ -49,7 +50,8 @@ class SellersController extends Controller
         $toko = Toko::where('user_id', $seller->id)->first();
         $toko->status = 'active';
         $toko->save();
-        return redirect()->back()->with('success', 'Seeler Divalidasi');
+        toastr()->success('Seller divalidasi');
+        return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.

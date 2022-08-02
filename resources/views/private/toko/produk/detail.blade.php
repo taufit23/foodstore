@@ -40,7 +40,7 @@
                                         </span>
                                         <span class="description">{{ $product->deskripsi_produk }}</span>
                                         <span class="description">
-                                            {{ $product->created_at->format('l jS \\of F Y h:i:s A') }} </span>
+                                            {{ $product->created_at->diffForHumans() }} </span>
                                     </div>
                                 </div>
                             </div>
@@ -53,11 +53,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($product->image as $image)
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-6">
                                         <a href="{{ asset($image->url) }}" data-toggle="lightbox"
                                             data-title="sample 1 - white" data-gallery="gallery">
                                             <img src="{{ asset($image->url) }}" class="img-fluid mb-2"
-                                            alt="white sample" />
+                                                alt="white sample" />
                                         </a>
                                     </div>
                                     @endforeach
@@ -65,8 +65,13 @@
                             </div>
                         </div>
                         <div class="text-right mt-5 mb-3">
-                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                            <a href="{{ route('product.index') }}" class="btn btn-sm btn-primary">Back</a>
+                            <form action="{{ route('product.destroy', $product->slug_produk) }}" method="POST" id="from-delete">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            {{-- <a href="{{ ) }}" class="btn btn-sm btn-danger">Delete</a> --}}
                         </div>
                     </div>
                 </div>

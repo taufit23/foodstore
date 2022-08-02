@@ -10,21 +10,6 @@ Product Toko
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        @if (session('errors'))
-                        <div class="alert alert-danger"
-                            style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                            role="alert">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </div>
-                        @elseif(session('success'))
-                        <div class="alert alert-success"
-                            style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                            role="alert">
-                            <li>{{ session('success') }}</li>
-                        </div>
-                        @endif
                         <div class="card-header">
                             <h3 class="card-title">Products By Category</h3>
                             <div class="card-tools">

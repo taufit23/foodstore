@@ -55,7 +55,14 @@
     <body class="hold-transition register-page" onload="initialize()"">
         <div class=" card card-outline card-primary">
         <div class="card-body">
-            <a href="{{ route('index') }}" class="h1">Daftar seller</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('register') }}" class="h1">Daftar seller</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ route('index') }}" class="btn btn-sm btn-default">Kembali ke Home</a>
+                </div>
+            </div>
             <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="input-group mb-3">
@@ -200,13 +207,14 @@
                     <!-- /.col -->
                 </div>
             </form>
-            @if (session('errors'))
-            <div class="alert alert-warning"
-                style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; " role="alert">
-                {{ session('errors') }}
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <a href="{{ route('index') }}" class="text-center btn btn-sm btn-default">Kembali ke Home</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ route('login') }}" class="text-center">Sudah memiliki akun?, Login</a>
+                </div>
             </div>
-            @endif
-            <a href="{{ route('login') }}" class="text-center">Sudah memiliki akun?, Login</a>
         </div>
         <!-- /.form-box -->
         </div><!-- /.card -->

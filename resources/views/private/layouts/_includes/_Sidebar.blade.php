@@ -74,7 +74,7 @@
                 </li>
                 {{-- toko link --}}
                 @else
-                @if (auth()->user()->status = 1)
+                @if (auth()->user()->status != null)
                 <li class="nav-item menu-open">
                     <a href="{{ route('product.index') }}"
                         class="nav-link {{ Request::is('tokos/product*') ? 'active' : '' }}">
@@ -90,6 +90,15 @@
                         <i class="nav-icon fab fa-500px"></i>
                         <p>
                             Kategori
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="{{ route('komentar.index') }}"
+                        class="nav-link {{ Request::is('tokos/komentar*') ? 'active' : '' }}">
+                        <i class="nav-icon fab fa-rocketchat"></i>
+                        <p>
+                            Komentar
                         </p>
                     </a>
                 </li>

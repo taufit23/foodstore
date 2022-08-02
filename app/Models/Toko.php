@@ -27,4 +27,8 @@ class Toko extends Model
     {
          return $this->hasMany(Komentar::class);
     }
+    public function kategori()
+    {
+        return $this->hasMany(Kategori::class);
+    }
 }

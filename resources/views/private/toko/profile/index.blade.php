@@ -4,7 +4,7 @@ Profile Toko
 @stop
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+
     <section class="content-header">
         <div class="container-fluid">
             <div class="row">
@@ -35,22 +35,23 @@ Profile Toko
                             </ul>
 
                         </div>
-                        <!-- /.card-body -->
+
                     </div>
                 </div>
-                <!-- /.col -->
+
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#Userdetail"
-                                        data-toggle="tab">Toko detail</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="tab">Toko detail</a>
+                                </li>
                             </ul>
-                        </div><!-- /.card-header -->
+                        </div>
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="Userdetail">
-                                    <!-- Post -->
+
                                     <div class="post">
                                         <div class="user-block">
                                             <span class="username">
@@ -77,29 +78,9 @@ Profile Toko
                                                 Alamat
                                                 <code>{{ auth()->user()->toko->alamat }}</code>
                                             </span>
+                                            <a href="{{ route('profile.edit', auth()->user()->toko->slug_usaha) }}"
+                                                class="btn btn-block btm-warning bg-black">Edit Profile</a>
                                             <h4>Ganti Password</h4>
-                                            @if (session('errors'))
-                                            <div class="alert alert-danger"
-                                                style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                                                role="alert">
-                                                @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                                @endforeach
-                                            </div>
-                                            @endif
-                                            @if (session('gagal'))
-                                            <div class="alert alert-danger"
-                                                style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                                                role="alert">
-                                                <li>{{ session('gagal') }}</li>
-                                            </div>
-                                            @elseif(session('success'))
-                                            <div class="alert alert-success"
-                                                style="margin-top: 25px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; "
-                                                role="alert">
-                                                <li>{{ session('success') }}</li>
-                                            </div>
-                                            @endif
                                             <form action="{{ route('profile.gantipw') }}" method="post">
                                                 @csrf
                                                 <div class="row">
@@ -123,12 +104,12 @@ Profile Toko
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
+
+                        </div>
                     </div>
-                    <!-- /.card -->
+
                 </div>
-                <!-- /.col -->
+
             </div>
         </div>
     </section>

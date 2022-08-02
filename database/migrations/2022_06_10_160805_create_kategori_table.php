@@ -16,6 +16,7 @@ class CreateKategoriTable extends Migration
         Schema::create('kategori', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('toko_id');
             $table->string('nama_kategori');
             $table->string('slug_kategori');
             $table->string('cover_categori')->nullable();//foto atau banner kategori

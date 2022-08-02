@@ -4,18 +4,90 @@
 <div class="container-fluid">
     <div class="row">
         @foreach ($kategori as $kate)
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card text-bg-dark">
                 <img src="{{ asset($kate->cover_categori) }}" class="card-img img-thumbnail">
                 <div class="card-img-overlay">
-                    <h5 class="card-title text-white">{{ $kate->nama_kategori }}</h5>
-                    <a href="{{ route('databycategori', $kate->slug_kategori) }}" class="btn btn-sm btn-primary">Lihat produk</a>
-                    <p class="card-text text-white">{{ $kate->created_at }}</p>
+                    <a href="{{ route('databycategori', $kate->slug_kategori) }}" class="btn btn-sm btn-primary">Lihat
+                        produk</a>
+                </div>
+                <div class="ribbon-wrapper ribbon-xl">
+                    <div class="ribbon bg-success text-lg">
+                        <h2>
+                            <h5 class="card-title text-white">{{ $kate->nama_kategori }}</h5>
+                            <p class="card-text text-white">Update : {{ $kate->created_at->diffForHumans() }}</p>
+                        </h2>
+                    </div>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
 </div>
+<script>
+    $(function () {
+        /* BOOTSTRAP SLIDER */
+        $('.slider').bootstrapSlider()
 
+        /* ION SLIDER */
+        $('#range_1').ionRangeSlider({
+            min: 0,
+            max: 5000,
+            from: 1000,
+            to: 4000,
+            type: 'double',
+            step: 1,
+            prefix: '$',
+            prettify: false,
+            hasGrid: true
+        })
+        $('#range_2').ionRangeSlider()
+
+        $('#range_5').ionRangeSlider({
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: ' mm',
+            prettify: false,
+            hasGrid: true
+        })
+        $('#range_6').ionRangeSlider({
+            min: -50,
+            max: 50,
+            from: 0,
+            type: 'single',
+            step: 1,
+            postfix: '°',
+            prettify: false,
+            hasGrid: true
+        })
+
+        $('#range_4').ionRangeSlider({
+            type: 'single',
+            step: 100,
+            postfix: ' light years',
+            from: 55000,
+            hideMinMax: true,
+            hideFromTo: false
+        })
+        $('#range_3').ionRangeSlider({
+            type: 'double',
+            postfix: ' miles',
+            step: 10000,
+            from: 25000000,
+            to: 35000000,
+            onChange: function (obj) {
+                var t = ''
+                for (var prop in obj) {
+                    t += prop + ': ' + obj[prop] + '\r\n'
+                }
+                $('#result').html(t)
+            },
+            onLoad: function (obj) {
+                //
+            }
+        })
+    })
+</script>
 @endsection

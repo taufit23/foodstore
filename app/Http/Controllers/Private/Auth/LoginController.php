@@ -27,6 +27,7 @@ class LoginController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
+            toastr()->error('terjadi beberapa error');
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
         $data = [
@@ -37,26 +38,32 @@ class LoginController extends Controller
         Auth::attempt($data);
         if (Auth::check()) {
             if (Auth::user()->role == 'admin') {
-                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil');
+                toastr()->success('Login Admin berhasil');
+                return redirect()->route('admin.dashboard');
             }
             elseif (Auth::user()->role == 'toko') {
                 if (Auth::user()->status == null) {
-                    return redirect()->route('toko.dashboard')->with('errors', 'Pendaftaran toko belum divalidasi');
+                    toastr()->error('Login gagal, Akun belum tervalidasi');
+                    return redirect()->route('toko.dashboard');
                 }
                 elseif (Auth()->user()->status == 1) {
-                    return redirect()->route('toko.dashboard')->with('success', 'login sukses');
+                    toastr()->success('Login Seller berhasil');
+                    return redirect()->route('toko.dashboard');
                 }else {
-                    return redirect()->route('logout')->with('errors', 'Akun toko anda dibekukan!');
+                    toastr()->error('Akun anda dibekukan');
+                    return redirect()->route('logout');
                 }
             }
         } else { // false
             //Login Fail
-            return redirect()->route('login')->with('gagal', 'Email atau password salah');
+            toastr()->error('Login Admin berhasil');
+            return redirect()->route('login');
         }
     }
     public function logout()
     {
         Auth::logout(); // menghapus session yang aktif
+        toastr()->success('Logout berhasil');
         return redirect()->route('index');
     }
 }

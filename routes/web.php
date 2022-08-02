@@ -11,10 +11,12 @@ use App\Http\Controllers\Private\Auth\LoginController;
 use App\Http\Controllers\Private\Auth\RegisterController;
 use App\Http\Controllers\Private\Toko\DashboardController as TokoDashboardController;
 use App\Http\Controllers\Private\Toko\KategoriController;
+use App\Http\Controllers\Private\Toko\KomentarController;
 use App\Http\Controllers\Private\Toko\PasswordController;
 use App\Http\Controllers\Private\Toko\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/tentang', [HomeController::class, 'tentang'])->name('index.tentang');
 Route::get('/kategori', [HomeController::class, 'datakategori'] )->name('datakategori');
 Route::get('/kategori/{slugkate}', [HomeController::class, 'databykategori'] )->name('databycategori');
 Route::get('/toko/{toko}', [TokoController::class, 'toko']);
@@ -22,11 +24,11 @@ Route::post('/toko/{toko}/postkoment', [TokoController::class, 'postkoment']);
 Route::get('/produk/{prod}', [HomeController::class, 'detailproduk'])->name('detail.produk');
 
 // login
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/auth/login', [LoginController::class, 'index'])->name('login');
+Route::post('/auth/login', [LoginController::class, 'login'])->name('login');
+Route::get('/auth/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/auth/register', [RegisterController::class, 'store'])->name('register');
+Route::post('/auth/logout', [LoginController::class, 'logout'])->name('logout');
 
 // admin
 Route::group(['middleware' => ['auth', 'Cekrole:admin']], function() {
@@ -45,12 +47,14 @@ Route::group(['middleware' => ['auth', 'Cekrole:toko']], function(){
     Route::get('/tokos/dashboard', TokoDashboardController::class)->name('toko.dashboard');
     Route::resource('/tokos/product', ProductController::class);
     Route::post('/tokos/product/addimageslide', [ ProductController::class, 'addimageslide'])->name('addimageslide');
-
     // pass
     Route::get('/tokos/profile', [PasswordController::class, 'index'])->name('profile.index');
+    Route::get('/tokos/profile/{id}', [PasswordController::class, 'editprofile'])->name('profile.edit');
+    Route::put('/tokos/profile/{id}', [PasswordController::class, 'update'])->name('profile.update');
     Route::post('/tokos/profile/gantipw', [PasswordController::class, 'gantipw'])->name('profile.gantipw');
     // kategori
     Route::get('/tokos/kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/tokos/kategori/add', [KategoriController::class, 'store'])->name('toko.addcategory');
+    Route::resource('/tokos/komentar', KomentarController::class);
     // Route::get('/tokos/{slug_kategori}', [ProductController::class, 'product_by_slug']);
 });

@@ -14,7 +14,7 @@ class KomentarFactory extends Factory
     public function definition()
     {
         return [
-            'toko_id' => $this->faker->numberBetween(1, 3),
+            'toko_id' => $this->faker->numberBetween(1, 2),
             'nama_costumer' => $this->faker->name(),
             'komentar' => $this->faker->realText($maxNbChars = 200, $indexSize = 3  ),
         ];

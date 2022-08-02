@@ -15,7 +15,7 @@
                     <a class="nav-link" href="{{ route('datakategori') }}">Kategori</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tentang</a>
+                    <a class="nav-link" href="{{ route('index.tentang') }}">Tentang</a>
                 </li>
                 @auth
                 <li class="nav-item">
@@ -24,7 +24,10 @@
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
                 @endauth
             </ul>

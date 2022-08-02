@@ -16,6 +16,7 @@ class KategoriFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 100),
+            'toko_id' => $this->faker->numberBetween(1, 100),
             'nama_kategori' => $this->faker->name,
             'slug_kategori' => Str::slug($this->faker->name),
             'cover_categori' => 'https://picsum.photos/200/300?' . $this->faker->numberBetween(1, 9999),

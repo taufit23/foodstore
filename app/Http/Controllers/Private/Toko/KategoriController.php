@@ -20,6 +20,7 @@ class KategoriController extends Controller
     {
         $kategori = new Kategori();
         $kategori->user_id = auth()->user()->id;
+        $kategori->toko_id = auth()->user()->toko->id;
         $kategori->nama_kategori = $kategoryRequest->nama_kategori;
         $kategori->slug_kategori = Str::slug($kategoryRequest->nama_kategori, '_');
         if ($kategoryRequest->hasFile('cover_kategori')) {
@@ -34,7 +35,8 @@ class KategoriController extends Controller
             $kategori->cover_categori = 'images/cover_kategori/' . $input['imagename'];
         }
         $kategori->save();
-        return redirect()->back()->with('success', 'Kategori ditambahkan');
+        toastr()->success('Kategori ditambahkan');
+        return redirect()->back();
     }
 
 }

@@ -96,8 +96,8 @@ Dashboard Admin
                                                     <div class="contacts-list-info">
                                                         <span class="contacts-list-name">
                                                             {{ $koment->nama_costumer }}
-                                                            {{-- <small
-                                                                class="contacts-list-date float-right">{{ $koment->created_at->isoFormat('dddd D') }}</small> --}}
+                                                            <small
+                                                                class="contacts-list-date float-right">{{ $koment->created_at->diffForHumans() }}</small>
                                                         </span>
                                                         <span class="contacts-list-msg">{{ $koment->komentar }}</span>
                                                         <small
@@ -137,7 +137,7 @@ Dashboard Admin
                                         <li>
                                             <img src="{{ asset($toko->cover) }}" class="img img-circle img img-fluid" width="100">
                                             <a class="users-list-name" href="#">{{ $toko->nama_usaha }}</a>
-                                            {{-- <span class="users-list-date">{{ $toko->created_at->isoFormat('dddd D MMMM Y') }}</span> --}}
+                                            <span class="users-list-date">{{ $toko->created_at->diffForHumans() }}</span>
                                         </li>
                                         @endforeach
                                     </ul>
