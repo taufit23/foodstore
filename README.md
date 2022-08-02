@@ -34,14 +34,14 @@ install repository
 ```
 composer install
 ```
-install dependency
+<!-- install dependency
 ```
 npm i && npm run dev
 ```
 run serve with 2 terminal
 ```
 npm run watch
-```
+``` -->
 ```
 php artisan serve
 ```
