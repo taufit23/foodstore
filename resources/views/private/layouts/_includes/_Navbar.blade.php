@@ -1,5 +1,4 @@
 <nav class="main-header navbar navbar-expand navbar-dark">
-    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -8,4 +7,3 @@
         </li>
     </ul>
 </nav>
-<!-- /.navbar -->

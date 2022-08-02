@@ -7,7 +7,7 @@ Project menggunakan laravel nersi 9
 ### kebutuhan
 
 ```
-Php versi 8
+Php versi 8 (Delapan)
 ```
 ```
 composer

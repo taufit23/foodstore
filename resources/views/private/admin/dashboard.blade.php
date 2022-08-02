@@ -16,7 +16,7 @@ Dashboard Admin
     </div>
     <section class="content">
         <div class="container-fluid">
-            <!-- Info boxes -->
+
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
@@ -66,14 +66,14 @@ Dashboard Admin
                 </div>
             </div>
 
-            <!-- Main row -->
+
             <div class="row">
-                <!-- Left col -->
+
                 <div class="col-md-12">
-                    <!-- /.card -->
+
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- DIRECT CHAT -->
+
                             <div class="card direct-chat direct-chat-warning">
                                 <div class="card-header">
                                     <h3 class="card-title">Komentar terbaru</h3>
@@ -110,12 +110,12 @@ Dashboard Admin
                                     </div>
                                 </div>
                             </div>
-                            <!--/.direct-chat -->
+
                         </div>
-                        <!-- /.col -->
+
 
                         <div class="col-md-6">
-                            <!-- USERS LIST -->
+
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Toko terbaru</h3>
@@ -130,7 +130,7 @@ Dashboard Admin
                                         </button>
                                     </div>
                                 </div>
-                                <!-- /.card-header -->
+
                                 <div class="card-body p-0">
                                     <ul class="users-list clearfix">
                                         @foreach ($tokos as $toko)
@@ -141,19 +141,19 @@ Dashboard Admin
                                         </li>
                                         @endforeach
                                     </ul>
-                                    <!-- /.users-list -->
+
                                 </div>
                             </div>
-                            <!--/.card -->
+
                         </div>
-                        <!-- /.col -->
+
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
+
         </div>
-        <!--/. container-fluid -->
+
     </section>
-    <!-- /.content -->
+
 </div>
 @endsection
