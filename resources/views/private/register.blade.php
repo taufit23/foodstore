@@ -94,13 +94,14 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input value="{{ old('no_hp') }}" type="text" class="form-control" placeholder="Nomor HP"
+                    <input value="{{ old('no_hp') }}" type="text" class="form-control" placeholder="Nomor HP, Extample : 622287553138"
                         name="no_hp">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
+                    <code>Note : </code>
                     @error('no_hp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

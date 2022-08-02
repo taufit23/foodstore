@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Komentar;
 use Illuminate\Http\Request;
-use App\Models\Lokasi;
-use App\Models\Produk;
 use App\Models\Toko;
 use App\Models\User;
 use Carbon\Carbon;

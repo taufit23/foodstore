@@ -30,7 +30,7 @@ Product Toko
                                         <th>#</th>
                                         <th>Kategory</th>
                                         <th>Kategory Cover</th>
-                                        <th>Lihat Poduk</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,9 +43,17 @@ Product Toko
                                                 class="img img-size-64 img-thumbnail" alt="">
                                         </td>
                                         <td class="text-center">
-                                            <a href="/tokos/{{ $kategori->slug_kategori }}">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="/tokos/kategori/{{ $kategori->slug_kategori }}/edit">
+                                                <i class="fas fa-edit"></i> Edit
                                             </a>
+                                            <form action="{{ route('hapus.kategori', $kategori->id) }}"
+                                                method="POST" id="from-delete" onclick="confirm('Menghapus kategori, juga akan mengkapus produk')">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="">
+                                                    <i class="text-danger fas fa-trash-alt"></i> Hapus
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

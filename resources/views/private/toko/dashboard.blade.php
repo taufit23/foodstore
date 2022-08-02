@@ -96,11 +96,21 @@
                                                         <label>Password lama</label>
                                                         <input class="form-control form-control-sm" type="password"
                                                             placeholder="Password" name="password">
+                                                            @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label>Password baru</label>
                                                         <input class="form-control form-control-sm" type="password"
                                                             placeholder="New Password" name="new_password">
+                                                            @error('new_password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                                                     </div>
                                                     <div class="row justify-content-end">
                                                         <button type="submit"

@@ -14,8 +14,10 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <h5 class="my-3">{{ $toko->nama_usaha }}</h5>
-                        <p>{{ $toko->Keterangan }}
+                        <h5 class="my-3">Nama Usaha : {{ $toko->nama_usaha }}</h5>
+                        <p>Keterangan : {{ $toko->Keterangan }}
+                        <p>Nomor Hp : {{ $user_toko->no_hp }} <a href="https://api.whatsapp.com/send?phone={{ $user_toko->no_hp }}&text=kami%20dengan%20Kuliner%20kampar%2C%20Ada%20yang%20bisa%20dibantu%3F" target="_blank"><i class="fab fa-whatsapp-square fa-2x"></i>Chat toko</a></p>
+                        <p>Email : {{ $user_toko->email }}
                         </p>
                         <hr>
                         <h5>Kategori tersedia</h5>

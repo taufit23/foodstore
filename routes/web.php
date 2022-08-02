@@ -54,6 +54,9 @@ Route::group(['middleware' => ['auth', 'Cekrole:toko']], function(){
     Route::post('/tokos/profile/gantipw', [PasswordController::class, 'gantipw'])->name('profile.gantipw');
     // kategori
     Route::get('/tokos/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::get('/tokos/kategori/{slug_kategori}/edit', [KategoriController::class, 'edit']);
+    Route::post('/tokos/kategori/{id}/update', [KategoriController::class, 'update'])->name('update.kategori');
+    Route::delete('/tokos/kategori/{id}/hapus', [KategoriController::class, 'delete'])->name('hapus.kategori');
     Route::post('/tokos/kategori/add', [KategoriController::class, 'store'])->name('toko.addcategory');
     Route::resource('/tokos/komentar', KomentarController::class);
     // Route::get('/tokos/{slug_kategori}', [ProductController::class, 'product_by_slug']);
