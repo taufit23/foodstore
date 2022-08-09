@@ -9,7 +9,7 @@
                 <img src="{{ asset($kate->cover_categori) }}" class="card-img img-thumbnail">
                 <div class="card-img-overlay">
                     <a href="{{ route('databycategori', $kate->slug_kategori) }}" class="btn btn-sm btn-primary">Lihat
-                        produk</a>
+                        produk & Toko</a>
                 </div>
                 <div class="ribbon-wrapper ribbon-xl">
                     <div class="ribbon bg-success text-lg">

@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Produk::where('user_id', auth()->user()->id)->get();
-        $kategory = Kategori::where('user_id', auth()->user()->id)->get();
+        $kategory = Kategori::all();
         return view('private.toko.produk.index', compact('products', 'kategory'));
     }
 
@@ -82,7 +82,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Produk::where('slug_produk', $id)->first();
-        $kategory = Kategori::where('user_id', auth()->user()->id)->get();
+        $kategory = Kategori::all();
         return view('private.toko.produk.edit', compact('product', 'kategory'));
     }
 

@@ -101,7 +101,6 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    <code>Note : </code>
                     @error('no_hp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

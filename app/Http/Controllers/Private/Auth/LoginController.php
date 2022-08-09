@@ -56,7 +56,7 @@ class LoginController extends Controller
             }
         } else { // false
             //Login Fail
-            toastr()->error('Login Admin berhasil');
+            toastr()->error('Login gagal');
             return redirect()->route('login');
         }
     }

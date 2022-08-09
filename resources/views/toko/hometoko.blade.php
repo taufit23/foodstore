@@ -16,39 +16,42 @@
                     <div class="col-sm-5">
                         <h5 class="my-3">Nama Usaha : {{ $toko->nama_usaha }}</h5>
                         <p>Keterangan : {{ $toko->Keterangan }}
-                        <p>Nomor Hp : {{ $user_toko->no_hp }} <a href="https://api.whatsapp.com/send?phone={{ $user_toko->no_hp }}&text=kami%20dengan%20Kuliner%20kampar%2C%20Ada%20yang%20bisa%20dibantu%3F" target="_blank"><i class="fab fa-whatsapp-square fa-2x"></i>Chat toko</a></p>
-                        <p>Email : {{ $user_toko->email }}
-                        </p>
-                        <hr>
-                        <h5>Kategori tersedia</h5>
-                        <div class="btn-group btn-group-toggle " data-toggle="buttons">
-                            @foreach ($toko->kategori as $kategori)
-                            <label class="btn btn-default text-center row">
-                                <div class="col-md-12">
-                                    <img src="{{ asset($kategori->cover_categori) }}" style="width: 80px; height: 80px;"
-                                        class="">
-                                </div>
-                                <div class="col-md-12">
-                                    <code>{{ $kategori->nama_kategori }}</code>
-                                </div>
-                            </label>
+                            <p>Nomor Hp : {{ $user_toko->no_hp }} <a
+                                    href="https://api.whatsapp.com/send?phone={{ $user_toko->no_hp }}&text=kami%20dengan%20Kuliner%20kampar%2C%20Ada%20yang%20bisa%20dibantu%3F"
+                                    target="_blank"><i class="fab fa-whatsapp-square fa-2x"></i>Chat toko</a></p>
+                            <p>Email : {{ $user_toko->email }}
+                            </p>
+                            <hr>
+                            <h5>Kategori tersedia</h5>
+                            <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                @foreach ($toko->kategori as $kategori)
+                                <label class="btn btn-default text-center row">
+                                    <div class="col-md-12">
+                                        <img src="{{ asset($kategori->cover_categori) }}"
+                                            style="width: 80px; height: 80px;" class="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <code>{{ $kategori->nama_kategori }}</code>
+                                    </div>
+                                </label>
+                                @endforeach
+                            </div>
+                            <hr>
+                            <h5>Produk tersedia</h5>
+                            @foreach ($toko->produk as $produk)
+                            <a href="{{ route('detail.produk', $produk->slug_produk) }}"
+                                class="btn-group btn-group-toggle " data-toggle="buttons">
+                                <label class="btn btn-default text-center row">
+                                    <div class="col-md-12">
+                                        <img src="{{ asset($produk->cover_produk) }}" style="width: 80px; height: 80px;"
+                                            class="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <code>{{ $produk->nama_produk }}</code>
+                                    </div>
+                                </label>
+                            </a>
                             @endforeach
-                        </div>
-                        <hr>
-                        <h5>Produk tersedia</h5>
-                        @foreach ($toko->produk as $produk)
-                        <a href="{{ route('detail.produk', $produk->slug_produk) }}" class="btn-group btn-group-toggle " data-toggle="buttons">
-                            <label class="btn btn-default text-center row">
-                                <div class="col-md-12">
-                                    <img src="{{ asset($produk->cover_produk) }}" style="width: 80px; height: 80px;"
-                                        class="">
-                                </div>
-                                <div class="col-md-12">
-                                    <code>{{ $produk->nama_produk }}</code>
-                                </div>
-                            </label>
-                        </a>
-                        @endforeach
                     </div>
                     <div class="col-sm-5">
                         <nav class="w-100">
@@ -64,13 +67,16 @@
                                 @foreach ($komentars as $komen)
                                 <div class="align-items-center">
                                     <div>
-                                        <h6 class="fw-bold text-primary">{{ $komen->nama_costumer }}</h6>
+                                        <h6 class="fw-bold text-primary">{{ $komen->nama_costumer }} @for ($index = 0; $index < $komen->star; $index++)
+                                            <i class="bi bi-star text-warning"></i>
+                                            @endfor</h6>
                                         <p class="text-muted small">
                                             <code>
                                                 {{ $komen->komentar }}
                                             </code>
                                             Comment on : {{ $komen->created_at->diffForHumans() }}
                                         </p>
+
                                     </div>
 
                                 </div>
@@ -91,18 +97,38 @@
 
                                         </div>
                                     </div>
-                                    <div class="float-end mt-2 pt-1">
-                                        <button type="submit" class="btn btn-primary btn-sm">Kirim
-                                            komentar</button>
+                                    <div class="d-flex flex-start w-100">
+
+                                        <input value="5" class="star star-5" id="star-5" type="radio" name="star" />
+                                        <label class="star star-5" for="star-5"></label>
+
+                                        <input value="4" class="star star-4" id="star-4" type="radio" name="star" />
+                                        <label class="star star-4" for="star-4"></label>
+
+                                        <input value="3" class="star star-3" id="star-3" type="radio" name="star" />
+                                        <label class="star star-3" for="star-3"></label>
+
+                                        <input value="2" class="star star-2" id="star-2" type="radio" name="star" />
+                                        <label class="star star-2" for="star-2"></label>
+
+                                        <input value="1" class="star star-1" id="star-1" type="radio" name="star" />
+                                        <label class="star star-1" for="star-1"></label>
+
                                     </div>
-                                </form>
+
                             </div>
+                            <div class="float-end mt-2 pt-1">
+                                <button type="submit" class="btn btn-primary btn-sm">Kirim
+                                    komentar</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>
 <!-- /.content -->
 <div></div>

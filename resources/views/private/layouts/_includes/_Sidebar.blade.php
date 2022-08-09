@@ -42,7 +42,7 @@
                 </li>
                 {{-- admin link --}}
                 @if (auth()->user()->role == 'admin')
-                <li class="nav-header">Other Actor</li>
+                <li class="nav-header">Actor's</li>
                 <li class="nav-item">
                     <a href="{{ route('sellers.index') }}"
                         class="nav-link {{ Request::is('admin/sellers*') ? 'active' : '' }}">
@@ -70,6 +70,16 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">Product's</li>
+                <li class="nav-item">
+                    <a href="{{ route('kategori.index') }}"
+                        class="nav-link {{ Request::is('admin/kategori*') ? 'active' : '' }}">
+                        </i><i class="text-success nav-icon fab fa-500px"></i>
+                        <p>
+                            Kategori
+                        </p>
+                    </a>
+                </li>
                 {{-- toko link --}}
                 @else
                 @if (auth()->user()->status != null)
@@ -79,15 +89,6 @@
                         <i class="nav-icon fab fa-product-hunt"></i>
                         <p>
                             Product
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item menu-open">
-                    <a href="{{ route('kategori.index') }}"
-                        class="nav-link {{ Request::is('tokos/kategori*') ? 'active' : '' }}">
-                        <i class="nav-icon fab fa-500px"></i>
-                        <p>
-                            Kategori
                         </p>
                     </a>
                 </li>
@@ -117,7 +118,7 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-header">Account</li>
+                <li class="nav-header">Action button</li>
                 <li class="nav-item">
                     <a class="btn btn-primary btn-block" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

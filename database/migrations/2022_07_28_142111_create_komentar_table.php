@@ -18,6 +18,7 @@ class CreateKomentarTable extends Migration
             $table->integer('toko_id');
             $table->string('nama_costumer');
             $table->text('komentar');
+            $table->integer('star');
             $table->timestamps();
         });
     }

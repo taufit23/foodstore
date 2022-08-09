@@ -24,15 +24,18 @@ class TokoController extends Controller
         $rules = [
             'nama_costumer'   => 'required|string',
             'komentar'        => 'required',
+            'star'            => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
+            toastr()->error('terjadi beberapa error');
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
         $komentar = new Komentar();
         $komentar->toko_id = $toko;
         $komentar->nama_costumer = $request->nama_costumer;
         $komentar->komentar = $request->komentar;
+        $komentar->star = $request->star;
         $komentar->created_at = Carbon::now();
         $komentar->updated_at = Carbon::now();
         $komentar->save();
