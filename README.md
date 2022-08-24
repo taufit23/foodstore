@@ -1,8 +1,8 @@
 # FoodStore
-
+Project ini adalah permintaan individu untuk memenuhi tugas akhirnya di salah satu universitas
 ## About <a name = "about"></a>
 
-Project menggunakan laravel nersi 9
+Project menggunakan laravel versi 9
 
 ### kebutuhan
 
